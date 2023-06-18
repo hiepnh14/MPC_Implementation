@@ -31,5 +31,5 @@ After that, you only need to initialize the MPC class, set the non-zero initiali
 3.  Optimization
 4.  
 
-This project is adapted from a public repo by pronenewbits. Thank you very much for developing such a good repo and detailed docs. 
+This project is adapted from a public repo by pronenewbits. Thanks for developing such a good repo and detailed docs. 
 - https://github.com/pronenewbits/Arduino_Constrained_MPC_Library
