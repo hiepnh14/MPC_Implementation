@@ -23,11 +23,11 @@
 
 
 /* MPC Parameters */
-#define MPC_HP_LEN      (15)
-#define MPC_HU_LEN      (8)
+#define MPC_HP_LEN      (10)
+#define MPC_HU_LEN      (10)
 
 // #define MPC_USE_CONSTRAINT_DU
-// #define MPC_USE_CONSTRAINT_U
+#define MPC_USE_CONSTRAINT_U
 // #define MPC_USE_CONSTRAINT_Z
 
 /* MPC Constraint Configuration*/
@@ -43,7 +43,7 @@
 
 
 /* Change this size based on the biggest matrix you will use */
-#define MATRIX_MAXIMUM_SIZE     (31)
+#define MATRIX_MAXIMUM_SIZE     (40)
 
 /* Define this to enable matrix bounds checking */
 #define MATRIX_USE_BOUNDS_CHECKING
@@ -51,7 +51,7 @@
 /* Set this define to choose math precision of the system */
 #define PRECISION_SINGLE    1
 #define PRECISION_DOUBLE    2
-#define FPU_PRECISION       (PRECISION_SINGLE)
+#define FPU_PRECISION       (PRECISION_DOUBLE)
 
 #if (FPU_PRECISION == PRECISION_SINGLE)
     #define float_prec          float

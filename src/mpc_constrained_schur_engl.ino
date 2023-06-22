@@ -34,16 +34,15 @@ void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
     
     
-    /* Ref: https://www.mathworks.com/help/control/ug/mimo-state-space-models.html#buv3tp8-1
+    /* 
      * 
-     * State-Space Model of Jet Transport Aircraft
-     *  This example shows how to build a MIMO model of a jet transport. Because the development of a physical model 
-     *  for a jet aircraft is lengthy, only the state-space equations are presented here. See any standard text in 
-     *  aviation for a more complete discussion of the physics behind aircraft flight.
-     * The jet model during cruise flight at MACH = 0.8 and H = 40,000 ft. is
+     * State-Space Model of a 1-10th Mini Car
+     *  This example shows how to control a vehicle with a 1-10th scale model of a linear vehicle dynamics. The model   
+     *  This model uses linearized kinematic bicycle model vehicle dynamics to compute the steering angle, the speed is set at constant 1m/s.
+     *  
      * 
-     * (The model has two inputs and two outputs. The units are radians for beta (sideslip angle) and phi (bank angle) and 
-     * radians/sec for yaw (yaw rate) and roll (roll rate). The rudder and aileron deflections are in degrees.)
+     * 
+     * (The model has 4 state-spaces, 1 control input, and 2 outputs)
      */ 
     A[0][0] = 1.0000;      A[0][1] =  0.0000;      A[0][2] =  0.0000;      A[0][3] = 0.1000;
     A[1][0] = 0.0000;      A[1][1] =  1.0000;      A[1][2] =  0.0500;      A[1][3] = 0.0000;
@@ -114,7 +113,7 @@ void loop() {
         /* =========================== Print to serial (for plotting) ========================== */
         #if (1)
             /* Print: Computation time, number of active set iteration, Set-Point, z */
-            snprintf(bufferTxSer, sizeof(bufferTxSer)-1, "%.3f %i %.3f %.3f %.3f %.3f", ((float)_maxu64compuTime)/1000., MPC_HIL.cntIterActiveSet, SP[0][0], SP[1][0], z[0][0], z[1][0]);
+            snprintf(bufferTxSer, sizeof(bufferTxSer)-1, "%.3f %i %.3f %.3f %.3f %.3f %.3f", ((float)_maxu64compuTime)/1000., MPC_HIL.cntIterActiveSet, SP[0][0], SP[1][0], z[0][0], z[1][0], u[0][0]);
         #else
             /* Print: Computation time, Set-Point, z, u */
             snprintf(bufferTxSer, sizeof(bufferTxSer)-1, "%.3f %i %.3f %.3f %.3f %.3f %.3f %.3f", ((float)_maxu64compuTime)/1000., MPC_HIL.cntIterActiveSet, SP[0][0], SP[1][0], z[0][0], z[1][0], u[0][0], u[1][0]);
